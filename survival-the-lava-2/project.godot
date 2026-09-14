@@ -15,6 +15,11 @@ run/main_scene="uid://booysh6yuwfqi"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Area3d="*uid://brldyvn2wgels"
+FloatingLand="*uid://bkm352gaxvt0a"
+
 [display]
 
 window/stretch/mode="canvas_items"

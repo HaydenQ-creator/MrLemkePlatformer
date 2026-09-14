@@ -4,9 +4,11 @@ using System;
 public partial class Player : CharacterBody3D
 {
 	// Movement configurations using Export to allow editing in the Inspector
-	[Export] public float Speed = 1.0f;
+	[Export] public float NormalSpeed = 5.0f;
 	[Export] public float JumpVelocity = 4.5f;
 	[Export] public float SprintSpeed = 10.0f;
+	[Export] public float Speed = 5.0f;
+
 
 	// Get the gravity from the project settings so it matches the engine physics
 	public float Gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
@@ -35,7 +37,7 @@ public partial class Player : CharacterBody3D
 		}
 		if (Input.IsActionJustReleased("sprint"))
 		{
-			Speed = 1;
+			Speed = NormalSpeed;
 		}
 
 

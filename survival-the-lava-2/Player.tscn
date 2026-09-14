@@ -25,10 +25,11 @@ mesh = SubResource("CapsuleMesh_ke062")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8847519, 0)
 mesh = SubResource("BoxMesh_kne1u")
 
-[node name="SpringArm3D" type="SpringArm3D" parent="CharacterBody3D" unique_id=1911345341]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1715982, 1.7562463, 2.2300851)
+[node name="SpringArm3D2" type="SpringArm3D" parent="CharacterBody3D" unique_id=1201514029]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2278055, 1.7562463, 2.2300851)
 script = ExtResource("2_kne1u")
+PlayerPath = NodePath("../..")
 
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/SpringArm3D" unique_id=999714286]
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/SpringArm3D2" unique_id=1617967415]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6532514, -0.21312869)
 script = ExtResource("2_kpjcp")

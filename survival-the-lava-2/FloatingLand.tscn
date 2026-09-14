@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bwdracwviq18k"]
+
+[ext_resource type="PackedScene" uid="uid://chcf3u4abw43f" path="res://Models/SmallGrassLand.glb" id="1_2fc4d"]
+[ext_resource type="Script" uid="uid://bkm352gaxvt0a" path="res://FloatingLand.cs" id="2_rb8h4"]
+[ext_resource type="Script" uid="uid://brldyvn2wgels" path="res://Area3d.cs" id="3_v2xtm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l1vy1"]
+size = Vector3(4.0771484, 0.83517456, 4.288086)
+
+[node name="FloatingLand" type="Node3D" unique_id=79284974]
+script = ExtResource("2_rb8h4")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1403916902]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1977266147]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2114882, 0)
+shape = SubResource("BoxShape3D_l1vy1")
+
+[node name="Area3D" type="Area3D" parent="CharacterBody3D" unique_id=1422971961]
+script = ExtResource("3_v2xtm")
+
+[node name="Area3d_CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Area3D" unique_id=1800474869]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4586654, 0)
+shape = SubResource("BoxShape3D_l1vy1")
+
+[node name="SmallGrassLand" parent="CharacterBody3D" unique_id=1360604594 instance=ExtResource("1_2fc4d")]
+transform = Transform3D(0.305, 0, 0, 0, 0.305, 0, 0, 0, 0.305, 0, 0, 0)
+
+[connection signal="body_entered" from="CharacterBody3D/Area3D" to="CharacterBody3D/Area3D" method="_on_body_entered"]

@@ -12,9 +12,9 @@ public partial class SpringArm3d : SpringArm3D
 	private CharacterBody3D _playerBody;
 
 	// Camera Configuration
-	[Export] public float MouseSensitivity = 0.003f;
-	[Export] public float MinPitch = Mathf.DegToRad(-45f);
-	[Export] public float MaxPitch = Mathf.DegToRad(60f);
+	[Export] public float MouseSensitivity = 0.002f;
+	[Export] public float MinPitch = Mathf.DegToRad(-35f);
+	[Export] public float MaxPitch = Mathf.DegToRad(80f);
 
 	public override void _Ready()
 	{
