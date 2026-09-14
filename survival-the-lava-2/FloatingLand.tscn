@@ -8,9 +8,9 @@
 size = Vector3(4.0771484, 0.83517456, 4.288086)
 
 [node name="FloatingLand" type="Node3D" unique_id=79284974]
-script = ExtResource("2_rb8h4")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1403916902]
+script = ExtResource("2_rb8h4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1977266147]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2114882, 0)
