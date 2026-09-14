@@ -1,16 +1,19 @@
 [gd_scene format=3 uid="uid://b4j7qan210c6c"]
 
-[ext_resource type="Script" uid="uid://fn6iyxveq1hv" path="res://CharacterBody3d.cs" id="1_xhfnw"]
+[ext_resource type="Script" uid="uid://cygun75k4h3vy" path="res://Player.cs" id="1_kpjcp"]
+[ext_resource type="Script" uid="uid://dx0ofuctnwve0" path="res://SpringArm3d.cs" id="2_kne1u"]
 [ext_resource type="Script" uid="uid://bhc8eifd1wpsd" path="res://Camera3d.cs" id="2_kpjcp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ke062"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ke062"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_kne1u"]
+
 [node name="Player" type="Node3D" unique_id=1658451054]
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=860412203]
-script = ExtResource("1_xhfnw")
+script = ExtResource("1_kpjcp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1884214666]
 shape = SubResource("CapsuleShape3D_ke062")
@@ -18,6 +21,14 @@ shape = SubResource("CapsuleShape3D_ke062")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=1694336557]
 mesh = SubResource("CapsuleMesh_ke062")
 
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=999714286]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CharacterBody3D" unique_id=2139449729]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8847519, 0)
+mesh = SubResource("BoxMesh_kne1u")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CharacterBody3D" unique_id=1911345341]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1715982, 1.7562463, 2.2300851)
+script = ExtResource("2_kne1u")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/SpringArm3D" unique_id=999714286]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6532514, -0.21312869)
 script = ExtResource("2_kpjcp")
