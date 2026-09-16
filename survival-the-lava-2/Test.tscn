@@ -14,7 +14,11 @@ sky_material = SubResource("ProceduralSkyMaterial_a202f")
 [sub_resource type="Environment" id="Environment_a0tk4"]
 background_mode = 2
 sky = SubResource("Sky_noarx")
-glow_enabled = true
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(0.7708395, 0.77083945, 0.77083945, 1)
+volumetric_fog_sky_affect = 0.82
 
 [node name="Node3D" type="Node3D" unique_id=590037695]
 

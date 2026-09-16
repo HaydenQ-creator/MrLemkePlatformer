@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://b4j7qan210c6c"]
 
 [ext_resource type="Script" uid="uid://cygun75k4h3vy" path="res://Player.cs" id="1_kpjcp"]
-[ext_resource type="Script" uid="uid://dx0ofuctnwve0" path="res://SpringArm3d.cs" id="2_kne1u"]
+[ext_resource type="Script" uid="uid://dtpoxsa0dqqj2" path="res://SpringArm3d.cs" id="2_kne1u"]
 [ext_resource type="Script" uid="uid://bhc8eifd1wpsd" path="res://Camera3d.cs" id="2_kpjcp"]
 [ext_resource type="Texture2D" uid="uid://dqgy28cfvlxmq" path="res://Models/CoolGuy_Untitled.png" id="4_e80uo"]
 
@@ -10,6 +10,14 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ke062"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_kne1u"]
+
+[sub_resource type="Animation" id="Animation_e80uo"]
+resource_name = "Idle"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cxr5p"]
+_data = {
+&"Idle": SubResource("Animation_e80uo")
+}
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_roclv"]
 resource_name = "Material"
@@ -118,7 +126,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8847519, 0)
 visible = false
 mesh = SubResource("BoxMesh_kne1u")
 
-[node name="Skeleton3D" type="Skeleton3D" parent="CharacterBody3D" unique_id=1725231453]
+[node name="CameraPivot" type="Node3D" parent="CharacterBody3D" unique_id=1846362034]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CharacterBody3D/CameraPivot" unique_id=1201514029]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2278055, 1.1764668, 2.2300851)
+script = ExtResource("2_kne1u")
+PlayerPath = NodePath("../../..")
+PivotPath = NodePath("../..")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/CameraPivot/SpringArm3D" unique_id=1617967415]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6532514, -0.21312869)
+script = ExtResource("2_kpjcp")
+
+[node name="Skeleton3D" type="Skeleton3D" parent="CharacterBody3D" unique_id=1183372209]
 transform = Transform3D(-2.141858e-08, 0, 0.49, 0, 0.49, 0, -0.49, 0, -2.141858e-08, 0, -0.18206424, 0)
 bones/0/name = "Bone"
 bones/0/parent = -1
@@ -166,14 +186,14 @@ bones/6/name = "Bone.006"
 bones/6/parent = 5
 bones/6/rest = Transform3D(1, -1.3881949e-07, 4.4582304e-08, 1.3881957e-07, 0.8130088, -0.5822515, 4.458204e-08, 0.5822515, 0.8130088, -6.238565e-11, 0.6217289, -1.3385382e-07)
 bones/6/enabled = true
-bones/6/position = Vector3(-6.238565e-11, 0.6217289, -1.3385382e-07)
+bones/6/position = Vector3(-6.237742e-11, 0.6217289, -1.3385382e-07)
 bones/6/rotation = Quaternion(0.30577055, 7.089716e-14, 7.290136e-08, 0.9521052)
-bones/6/scale = Vector3(1, 1, 1)
+bones/6/scale = Vector3(1, 1.0000001, 1.0000004)
 bones/7/name = "Bone.007"
 bones/7/parent = 6
 bones/7/rest = Transform3D(1, 7.101788e-08, 1.08227285e-08, -7.101788e-08, 0.9546063, 0.29787052, 1.0822686e-08, -0.29787052, 0.9546063, -2.7895908e-11, 0.47056928, -5.9348007e-08)
 bones/7/enabled = true
-bones/7/position = Vector3(-2.7895908e-11, 0.47056928, -5.9348007e-08)
+bones/7/position = Vector3(-2.789009e-11, 0.47056934, -2.2636211e-08)
 bones/7/rotation = Quaternion(-0.15065476, 1.0781193e-14, -3.59189e-08, 0.9885864)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/name = "Bone.008"
@@ -261,16 +281,11 @@ bones/19/position = Vector3(-1.1641484e-10, 0.29067037, -2.2351742e-08)
 bones/19/rotation = Quaternion(0.16588783, -6.71042e-24, -3.6834485e-17, 0.98614466)
 bones/19/scale = Vector3(1, 1.0000001, 1)
 
-[node name="Cube" type="MeshInstance3D" parent="CharacterBody3D/Skeleton3D" unique_id=1385185644]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody3D/Skeleton3D" unique_id=425231511]
+root_node = NodePath("../../..")
+libraries/ = SubResource("AnimationLibrary_cxr5p")
+
+[node name="Cube" type="MeshInstance3D" parent="CharacterBody3D/Skeleton3D" unique_id=1452431330]
 mesh = SubResource("ArrayMesh_cxr5p")
 skin = SubResource("Skin_tdg3f")
 skeleton = NodePath("..")
-
-[node name="SpringArm3D2" type="SpringArm3D" parent="CharacterBody3D" unique_id=1201514029]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2278055, 1.7562463, 2.2300851)
-script = ExtResource("2_kne1u")
-PlayerPath = NodePath("../..")
-
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/SpringArm3D2" unique_id=1617967415]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6532514, -0.21312869)
-script = ExtResource("2_kpjcp")
