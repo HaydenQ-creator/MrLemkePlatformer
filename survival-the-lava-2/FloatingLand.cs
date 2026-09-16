@@ -1,25 +1,21 @@
 using Godot;
 using System;
 
-public partial class FloatingLand : CharacterBody3D
+public partial class FloatingLand : StaticBody3D
 {
-	public static FloatingLand Instance { get; private set; }
-	
-	public const float Speed = 5.0f;
-	public static bool is_touched = true;
+	// The boolean that the Area3D will trigger
+	public bool is_touched { get; set; } = false;
 
-	public override void _Process(double delta)
-	{
-		GD.Print(is_touched);
-	}
+	[Export]
+	public float DescentSpeed { get; set; } = 2.0f;
 
 	public override void _PhysicsProcess(double delta)
 	{
-		Vector3 velocity = Velocity;
-		if (is_touched == true)
+		// Only move down if the Area3D has detected the player
+		if (is_touched)
 		{
-			velocity.Y -= Speed;
+			Vector3 movement = new Vector3(0, -DescentSpeed * (float)delta, 0);
+			GlobalPosition += movement;
 		}
 	}
-
 }

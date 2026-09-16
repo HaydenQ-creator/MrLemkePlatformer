@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b4j7qan210c6c" path="res://Player.tscn" id="1_njov2"]
 [ext_resource type="PackedScene" uid="uid://bwdracwviq18k" path="res://FloatingLand.tscn" id="2_njov2"]
+[ext_resource type="PackedScene" uid="uid://d2xdlrk8rdhtl" path="res://Models/CoolGuy.glb" id="3_2au82"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a202f"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -33,3 +34,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43525648, 1.5000005, 4.5546
 
 [node name="FloatingLand" parent="." unique_id=79284974 instance=ExtResource("2_njov2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.710747, -1.2809043, 6.6199837)
+
+[node name="CoolGuy" parent="." unique_id=1380900296 instance=ExtResource("3_2au82")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0347276, 3.0802398, -11.338713)

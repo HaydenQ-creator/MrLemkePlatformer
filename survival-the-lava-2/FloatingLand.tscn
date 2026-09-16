@@ -9,21 +9,21 @@ size = Vector3(4.0771484, 0.83517456, 4.288086)
 
 [node name="FloatingLand" type="Node3D" unique_id=79284974]
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1403916902]
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1938744076]
 script = ExtResource("2_rb8h4")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1977266147]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1977266147]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2114882, 0)
 shape = SubResource("BoxShape3D_l1vy1")
 
-[node name="Area3D" type="Area3D" parent="CharacterBody3D" unique_id=1422971961]
+[node name="Area3D" type="Area3D" parent="StaticBody3D" unique_id=1422971961]
 script = ExtResource("3_v2xtm")
 
-[node name="Area3d_CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Area3D" unique_id=1800474869]
+[node name="Area3d_CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Area3D" unique_id=1800474869]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4586654, 0)
 shape = SubResource("BoxShape3D_l1vy1")
 
-[node name="SmallGrassLand" parent="CharacterBody3D" unique_id=1360604594 instance=ExtResource("1_2fc4d")]
+[node name="SmallGrassLand" parent="StaticBody3D" unique_id=1360604594 instance=ExtResource("1_2fc4d")]
 transform = Transform3D(0.305, 0, 0, 0, 0.305, 0, 0, 0, 0.305, 0, 0, 0)
 
-[connection signal="body_entered" from="CharacterBody3D/Area3D" to="CharacterBody3D/Area3D" method="_on_body_entered"]
+[connection signal="body_entered" from="StaticBody3D/Area3D" to="StaticBody3D/Area3D" method="_on_body_entered"]
