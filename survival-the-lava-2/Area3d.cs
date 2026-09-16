@@ -16,7 +16,7 @@ public partial class Area3d : Area3D
 	{
 		if (body is CharacterBody3D)
 		{
-			FloatingLand.is_touched = true;
+			//FloatingLand.is_touched = true;
 		}
 	}
 

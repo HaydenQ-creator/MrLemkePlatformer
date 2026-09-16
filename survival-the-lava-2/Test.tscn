@@ -36,4 +36,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43525648, 1.5000005, 4.5546
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.710747, -1.2809043, 6.6199837)
 
 [node name="CoolGuy" parent="." unique_id=1380900296 instance=ExtResource("3_2au82")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0347276, 3.0802398, -11.338713)
+transform = Transform3D(0.77, 0, 0, 0, 0.77, 0, 0, 0, 0.77, -6.0347276, 2.1895175, -11.338713)
