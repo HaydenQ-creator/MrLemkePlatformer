@@ -4,10 +4,10 @@ using System;
 public partial class FloatingLand : StaticBody3D
 {
 	// The boolean that the Area3D will trigger
-	public bool is_touched { get; set; } = false;
+	public bool is_touched { get; set; } = true;
 
 	[Export]
-	public float DescentSpeed { get; set; } = 2.0f;
+	public float DescentSpeed { get; set; } = 0.7f;
 
 	public override void _PhysicsProcess(double delta)
 	{

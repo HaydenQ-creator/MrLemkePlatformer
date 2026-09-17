@@ -14,11 +14,18 @@ sky_material = SubResource("ProceduralSkyMaterial_a202f")
 [sub_resource type="Environment" id="Environment_a0tk4"]
 background_mode = 2
 sky = SubResource("Sky_noarx")
+ssil_enabled = true
+ssil_intensity = 0.0
 sdfgi_enabled = true
 sdfgi_use_occlusion = true
+sdfgi_y_scale = 2
+glow_normalized = true
+fog_enabled = true
+fog_light_energy = 2.35
+fog_sun_scatter = 1.0
 volumetric_fog_enabled = true
 volumetric_fog_albedo = Color(0.7708395, 0.77083945, 0.77083945, 1)
-volumetric_fog_sky_affect = 0.82
+volumetric_fog_temporal_reprojection_enabled = false
 
 [node name="Node3D" type="Node3D" unique_id=590037695]
 
@@ -26,8 +33,9 @@ volumetric_fog_sky_affect = 0.82
 environment = SubResource("Environment_a0tk4")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1721466632]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+transform = Transform3D(-0.36375386, -0.31386718, -0.87702364, -0.8155931, -0.34751776, 0.4626438, -0.4499901, 0.88358295, -0.12957695, 0, 0, 0)
 shadow_enabled = true
+shadow_blur = 0.42
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1877712852]
 use_collision = true
@@ -41,3 +49,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.710747, -1.2809043, 6.619
 
 [node name="CoolGuy" parent="." unique_id=1380900296 instance=ExtResource("3_2au82")]
 transform = Transform3D(0.77, 0, 0, 0, 0.77, 0, 0, 0, 0.77, -6.0347276, 2.1895175, -11.338713)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1963952149]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.183975, 7.768957, 5.9711914)
+use_collision = true
+size = Vector3(27.748047, 1, 14.4375)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1587544936]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7157898, 10.901064, -18.096222)
+use_collision = true
+size = Vector3(14.941895, 1, 14.4375)
