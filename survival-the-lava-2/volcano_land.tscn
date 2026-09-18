@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dgonqn5o0enxe"]
+
+[ext_resource type="PackedScene" uid="uid://biqiwtrp4ffa1" path="res://Models/VolcanoLand.glb" id="1_ur0oa"]
+
+[node name="VolcanoLand" unique_id=251203705 instance=ExtResource("1_ur0oa")]

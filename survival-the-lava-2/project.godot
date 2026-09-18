@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Survival The Lava 2"
-run/main_scene="uid://booysh6yuwfqi"
+run/main_scene="uid://bji4yihmk6205"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 

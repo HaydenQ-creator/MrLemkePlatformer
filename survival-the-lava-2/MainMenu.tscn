@@ -1,0 +1,163 @@
+[gd_scene format=3 uid="uid://bji4yihmk6205"]
+
+[ext_resource type="PackedScene" uid="uid://biqiwtrp4ffa1" path="res://Models/VolcanoLand.glb" id="1_eiy7p"]
+[ext_resource type="Texture2D" uid="uid://rx8wclkn475v" path="res://Models/T_smoke_b7.png" id="2_eiy7p"]
+[ext_resource type="Script" uid="uid://cr8fubibydaqa" path="res://MainMenu.cs" id="3_h7a2f"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eiy7p"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_h7a2f"]
+sky_material = SubResource("ProceduralSkyMaterial_eiy7p")
+process_mode = 3
+
+[sub_resource type="Environment" id="Environment_qoqlk"]
+background_mode = 2
+sky = SubResource("Sky_h7a2f")
+ssao_enabled = true
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+glow_enabled = true
+fog_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 1.0
+fog_depth_begin = 1651.1
+fog_depth_end = 4000.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0946
+volumetric_fog_albedo = Color(0.28485027, 0.28485027, 0.28485027, 1)
+volumetric_fog_emission = Color(0.08544371, 0, 0.00070275407, 1)
+volumetric_fog_emission_energy = 5.6
+volumetric_fog_anisotropy = 0.65
+volumetric_fog_length = 14.55
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fquxt"]
+transparency = 1
+albedo_texture = ExtResource("2_eiy7p")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+grow_amount = 0.703
+
+[sub_resource type="Gradient" id="Gradient_eiy7p"]
+offsets = PackedFloat32Array(0, 0.2674897, 0.5349794, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0.8271605, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_eiy7p"]
+gradient = SubResource("Gradient_eiy7p")
+
+[sub_resource type="Curve" id="Curve_eiy7p"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0.026022308, 0.1500001), 0.0, 0.0, 0, 0, Vector2(0.35687733, 2.1999998), 0.0, 0.0, 0, 0, Vector2(0.73977697, 7.9), 0.0, 0.0, 0, 0, Vector2(1, 10), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_eiy7p"]
+curve = SubResource("Curve_eiy7p")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_my0ti"]
+angle_min = -650.4
+angle_max = 720.0
+gravity = Vector3(0, 5, 0)
+use_scale_3d = true
+scale_3d_min = Vector3(105.375, 105.375, 105.375)
+scale_3d_max = Vector3(441.735, 441.735, 441.735)
+scale_curve = SubResource("CurveTexture_eiy7p")
+color = Color(0, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_eiy7p")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = 0.99999994
+turbulence_noise_strength = 12.87
+turbulence_noise_scale = 4.714
+turbulence_influence_max = 1.0
+turbulence_initial_displacement_min = -52.5
+turbulence_initial_displacement_max = 1.490116e-06
+
+[sub_resource type="QuadMesh" id="QuadMesh_gtilq"]
+
+[sub_resource type="CSharpScript" id="CSharpScript_qoqlk"]
+script/source = "using Godot;
+using System;
+
+public partial class StartButton : Button
+{
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+	}
+}
+"
+
+[node name="MainMenu" type="Node3D" unique_id=1211307557]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1767195919]
+environment = SubResource("Environment_qoqlk")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1793325220]
+transform = Transform3D(-0.367295, -0.5756963, 0.73052585, 0.7386467, 0.296771, 0.6052504, -0.5652395, 0.76190597, 0.3162337, -909.2117, 322.25644, 807.33765)
+shadow_enabled = true
+
+[node name="VolcanoLand" parent="." unique_id=251203705 instance=ExtResource("1_eiy7p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -473.8138, 322.9904, 369.79562)
+
+[node name="Volcano_smoke_particle" type="GPUParticles3D" parent="VolcanoLand" unique_id=331487542]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 560.9154, 0)
+material_override = SubResource("StandardMaterial3D_fquxt")
+amount = 50
+lifetime = 50.0
+preprocess = 50.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_my0ti")
+draw_pass_1 = SubResource("QuadMesh_gtilq")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=699373649]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1683365745]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=2100076681]
+transform = Transform3D(0.9470948, -0.19344643, -0.2561055, -0.09307871, 0.5981126, -0.7959885, 0.3071611, 0.77771455, 0.54846346, -933.3551, 290.55215, 746.5589)
+fov = 54.0
+
+[node name="Control" type="Control" parent="." unique_id=909078901]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_h7a2f")
+
+[node name="StartButton" type="Button" parent="Control" unique_id=1549998369]
+layout_mode = 0
+offset_top = 198.0
+offset_right = 307.0
+offset_bottom = 272.0
+text = "Start"
+alignment = 0
+script = SubResource("CSharpScript_qoqlk")
+
+[node name="QuitButton" type="Button" parent="Control" unique_id=2001793964]
+layout_mode = 0
+offset_top = 332.0
+offset_right = 307.0
+offset_bottom = 406.0
+text = "Quit
+"
+alignment = 0
+
+[connection signal="pressed" from="Control/StartButton" to="Control" method="_on_start_button_pressed"]
+[connection signal="pressed" from="Control/QuitButton" to="Control" method="_on_quit_button_pressed"]
