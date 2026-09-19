@@ -8,13 +8,38 @@ public partial class Player : CharacterBody3D
 	[Export] public float JumpVelocity = 4.5f;
 	[Export] public float SprintSpeed = 10.0f;
 	[Export] public float Speed = 5.0f;
+	
+	private AudioStreamPlayer _audioPlayer;
+	private AudioStreamPlayer _WalkPlayer;
 
+	
 
 	// Get the gravity from the project settings so it matches the engine physics
 	public float Gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
 
+	public override void _Ready()
+	{
+		_audioPlayer = GetNode<AudioStreamPlayer>("JumpSFX");
+		_WalkPlayer = GetNode<AudioStreamPlayer>("WalkSFX");
+		
+		
+	}
 
-
+	public override void _Process(double delta)
+	{
+		if (Input.IsActionJustPressed("left") && IsOnFloor())
+		{
+			if (!_WalkPlayer.IsPlaying())
+			{
+				_WalkPlayer.Play();
+			}
+		}
+		if (Input.IsActionJustReleased("left"))
+		{
+			_WalkPlayer.Stop();
+		}
+	}
+	
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector3 velocity = Velocity;
@@ -27,9 +52,11 @@ public partial class Player : CharacterBody3D
 
 		// 2. Handle Jump input
 		// Note: Default Godot action "ui_accept" maps to Spacebar/Enter
-		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
+		if (Input.IsActionJustPressed("jump") && IsOnFloor())
 		{
 			velocity.Y = JumpVelocity;
+			_WalkPlayer.Stop();
+			_audioPlayer.Play();
 		}
 		if (Input.IsActionJustPressed("sprint") && IsOnFloor())
 		{
@@ -39,6 +66,7 @@ public partial class Player : CharacterBody3D
 		{
 			Speed = NormalSpeed;
 		}
+		
 
 
 		// 3. Fetch direction vectors based on keyboard/gamepad inputs
@@ -53,6 +81,7 @@ public partial class Player : CharacterBody3D
 		{
 			velocity.X = direction.X * Speed;
 			velocity.Z = direction.Z * Speed;
+			
 		}
 		else
 		{

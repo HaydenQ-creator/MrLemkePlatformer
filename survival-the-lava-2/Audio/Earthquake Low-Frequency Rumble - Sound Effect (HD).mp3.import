@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://beqtmxvf8kll5"
+path="res://.godot/imported/Earthquake Low-Frequency Rumble - Sound Effect (HD).mp3-a51623ff6f32c41a3dcde121226295cc.mp3str"
+
+[deps]
+
+source_file="res://Audio/Earthquake Low-Frequency Rumble - Sound Effect (HD).mp3"
+dest_files=["res://.godot/imported/Earthquake Low-Frequency Rumble - Sound Effect (HD).mp3-a51623ff6f32c41a3dcde121226295cc.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

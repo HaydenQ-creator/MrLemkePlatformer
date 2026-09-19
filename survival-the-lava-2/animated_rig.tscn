@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://sh87sqdwswr0"]
+
+[ext_resource type="PackedScene" uid="uid://dq3teln3noi2m" path="res://Models/AnimatedRig.glb" id="1_71i4j"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_71i4j"]
+animation = &"ArmatureAction"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2fchn"]
+animation = &"ArmatureAction"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_1a051"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_l1vy1"]
+states/ArmatureAction/node = SubResource("AnimationNodeAnimation_2fchn")
+states/ArmatureAction/position = Vector2(315, 35)
+"states/ArmatureAction 2/node" = SubResource("AnimationNodeAnimation_71i4j")
+"states/ArmatureAction 2/position" = Vector2(170, 50)
+states/Start/position = Vector2(199, 100)
+states/StateMachine/node = SubResource("AnimationNodeStateMachine_1a051")
+states/StateMachine/position = Vector2(223, 43)
+graph_offset = Vector2(-112, -68)
+
+[node name="AnimatedRig" unique_id=1324601261 instance=ExtResource("1_71i4j")]
+transform = Transform3D(-2.5352605e-08, 0, 0.58, 0, 0.58, 0, -0.58, 0, -2.5352605e-08, 0, 0, 0)
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2" unique_id=1280822902]
+tree_root = SubResource("AnimationNodeStateMachine_l1vy1")
+anim_player = NodePath("../AnimationPlayer")

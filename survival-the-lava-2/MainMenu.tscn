@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://biqiwtrp4ffa1" path="res://Models/VolcanoLand.glb" id="1_eiy7p"]
 [ext_resource type="Texture2D" uid="uid://rx8wclkn475v" path="res://Models/T_smoke_b7.png" id="2_eiy7p"]
 [ext_resource type="Script" uid="uid://cr8fubibydaqa" path="res://MainMenu.cs" id="3_h7a2f"]
+[ext_resource type="PackedScene" uid="uid://c3m3380xyveqx" path="res://Models/TallTree.glb" id="4_qoqlk"]
+[ext_resource type="AudioStream" uid="uid://beqtmxvf8kll5" path="res://Audio/Earthquake Low-Frequency Rumble - Sound Effect (HD).mp3" id="5_iwfq2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eiy7p"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -26,8 +28,7 @@ fog_depth_begin = 1651.1
 fog_depth_end = 4000.0
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0946
-volumetric_fog_albedo = Color(0.28485027, 0.28485027, 0.28485027, 1)
-volumetric_fog_emission = Color(0.08544371, 0, 0.00070275407, 1)
+volumetric_fog_albedo = Color(0.30692267, 0.3069227, 0.3069227, 1)
 volumetric_fog_emission_energy = 5.6
 volumetric_fog_anisotropy = 0.65
 volumetric_fog_length = 14.55
@@ -50,8 +51,8 @@ colors = PackedColorArray(1, 0, 0, 1, 0.8271605, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1
 gradient = SubResource("Gradient_eiy7p")
 
 [sub_resource type="Curve" id="Curve_eiy7p"]
-_limits = [0.0, 10.0, 0.0, 1.0]
-_data = [Vector2(0.026022308, 0.1500001), 0.0, 0.0, 0, 0, Vector2(0.35687733, 2.1999998), 0.0, 0.0, 0, 0, Vector2(0.73977697, 7.9), 0.0, 0.0, 0, 0, Vector2(1, 10), 0.0, 0.0, 0, 0]
+_limits = [0.1500001, 45.608177, 0.0, 1.0]
+_data = [Vector2(0.026022308, 0.1500001), 0.0, 0.0, 0, 0, Vector2(0.35687733, 2.1999998), 0.0, 0.0, 0, 0, Vector2(0.73977697, 7.9), 0.0, 0.0, 0, 0, Vector2(1, 25.540579), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_eiy7p"]
@@ -62,7 +63,7 @@ angle_min = -650.4
 angle_max = 720.0
 gravity = Vector3(0, 5, 0)
 use_scale_3d = true
-scale_3d_min = Vector3(105.375, 105.375, 105.375)
+scale_3d_min = Vector3(106.435, 106.435, 106.435)
 scale_3d_max = Vector3(441.735, 441.735, 441.735)
 scale_curve = SubResource("CurveTexture_eiy7p")
 color = Color(0, 0, 0, 1)
@@ -113,6 +114,7 @@ material_override = SubResource("StandardMaterial3D_fquxt")
 amount = 50
 lifetime = 50.0
 preprocess = 50.0
+speed_scale = 0.5
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_my0ti")
 draw_pass_1 = SubResource("QuadMesh_gtilq")
@@ -131,8 +133,9 @@ size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=2100076681]
-transform = Transform3D(0.9470948, -0.19344643, -0.2561055, -0.09307871, 0.5981126, -0.7959885, 0.3071611, 0.77771455, 0.54846346, -933.3551, 290.55215, 746.5589)
-fov = 54.0
+transform = Transform3D(0.7132906, 0.5108755, 0.47981533, 0, 0.6846011, -0.7289179, -0.7008684, 0.51993024, 0.48831955, -253.59402, 316.37717, 849.58167)
+current = true
+fov = 50.4
 
 [node name="Control" type="Control" parent="." unique_id=909078901]
 layout_mode = 3
@@ -158,6 +161,28 @@ offset_bottom = 406.0
 text = "Quit
 "
 alignment = 0
+
+[node name="TallTree" parent="." unique_id=872262718 instance=ExtResource("4_qoqlk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -245.15433, 304.30298, 833.5879)
+
+[node name="TallTree2" parent="." unique_id=940359032 instance=ExtResource("4_qoqlk")]
+transform = Transform3D(0.05764763, 0, -0.998337, 0, 1, 0, 0.998337, 0, 0.05764763, -273.01175, 304.30298, 847.8675)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=799782284]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -477.38995, 816.6559, 384.95587)
+light_color = Color(1, 0, 0, 1)
+light_energy = 250.0
+light_indirect_energy = 20.0
+light_volumetric_fog_energy = 50.0
+light_size = 5.0
+light_specular = 16.0
+spot_range = 1566.6417
+spot_angle = 51.281963
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1936275267]
+stream = ExtResource("5_iwfq2")
+volume_db = -13.61
+autoplay = true
 
 [connection signal="pressed" from="Control/StartButton" to="Control" method="_on_start_button_pressed"]
 [connection signal="pressed" from="Control/QuitButton" to="Control" method="_on_quit_button_pressed"]
